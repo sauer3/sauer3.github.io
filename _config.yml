@@ -3,7 +3,7 @@ permalink:           pretty
 
 # Setup
 title:               Stephanie Auer
-tagline:             A Moderately Okay Data Science Blog
+tagline:             A Data Science Blog
 url:                 http://sauer3.github.io
 paginate:            2
 baseurl:             ""
@@ -24,7 +24,7 @@ author:
 # Custom vars
 version:             2.0.0
 github:
-  repo:              https://github.com/zwmiller
+  repo:              https://github.com/sauer3
 
 # Gems
 gems:
