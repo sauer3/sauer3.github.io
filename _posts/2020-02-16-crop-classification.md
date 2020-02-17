@@ -1,4 +1,4 @@
-![image info](/Users/AuerPower/Metis/git/crop-classification/presentation/images/three_pics.png)
+![image info](images/three_pics.png)
 ---
 layout: post
 title: Crop Classification Using Satellite Imagery in the Orange River Valley, South Africa
