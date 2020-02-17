@@ -14,24 +14,30 @@ The Orange River is a major agricultural region in South Africa that has been st
 
 
 ## Data
-Nullam id dolor id nibh ultricies vehicula ut id elit. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo.
+The crop dataset was provided as a polygon shapefile with 2,497 agricultural fields. The crops growing on each field were verified in person and with drones in 2017.
 
+There are 7 crop types present in the fields:
+
+1. Cotton
+2. Dates
+3. Grass
+4. Lucern
+5. Maize
+6. Pecan
+7. Vacant
+8. Vineyard
+9. Vineyard & Pecan ("Intercrop")
+
+This is a subset of the crop data provided.
+
+![crop shapefile]({{ site.url }}/images/orange_river_crops.png)
 
 ## Methods
 
 Footnotes are supported as part of the Markdown syntax. Here's one in action. Clicking this number[^fn-sample_footnote] will lead you to a footnote. The syntax looks like:
 
-{% highlight text %}
-Clicking this number[^fn-sample_footnote]
-{% endhighlight %}
+![test_train]({{ site.url }}/images/train_test_split.png)
 
-Each footnote needs the `^fn-` prefix and a unique ID to be referenced for the footnoted content. The syntax for that list looks something like this:
-
-{% highlight text %}
-[^fn-sample_footnote]: Handy! Now click the return link to go back.
-{% endhighlight %}
-
-You can place the footnoted content wherever you like. Markdown parsers should properly place it at the bottom of the post.
 
 ## Results
 
