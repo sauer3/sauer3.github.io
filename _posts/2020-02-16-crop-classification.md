@@ -1,9 +1,11 @@
-![Image test]({{ site.url }}/images/three_pics.png)
 ---
 layout: post
 title: Crop Classification Using Satellite Imagery in the Orange River Valley, South Africa
 ---
 
+![Image test]({{ site.url }}/images/three_pics.png)
+
+## Overview
 The Orange River is a major agricultural region in South Africa that has been stricken by drought in recent years. Accurate data is needed to improve agricultural growth and manage for vulnerability in the face of global change. Sub-Saharan Africa in particular struggles with incomplete or unreliable data in the agricultural sector. In 2018, the international community organized to launch the 50 X 2030 initiative, a commitment to collect better farm data with the goal of ending hunger.
 
 <p>The goal of this project is to build a model that can identify a crop with satellite imagery which can help with monitoring more quickly and cheaply. I chose to focus on identifying vineyards because wine from Orange River is South Africa’s top exported agricultural product and is economically important to the region. 
