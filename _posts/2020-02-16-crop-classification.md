@@ -1,4 +1,4 @@
-![image info](images/three_pics.png)
+![Image test]({{ site.url }}/images/three_pics.png)
 ---
 layout: post
 title: Crop Classification Using Satellite Imagery in the Orange River Valley, South Africa
