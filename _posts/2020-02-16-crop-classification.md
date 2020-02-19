@@ -32,29 +32,45 @@ This is a subset of the crop data provided.
 
 ![crop shapefile]({{ site.url }}/images/orange_river_crops.png)
 
+The satellite images from Sentinel-2 of the entire region across 11 time slices in one year (2017), covering summer and winter months. Sentinel-2 data has 13 bands. 
+
 ## Methods
 
-Footnotes are supported as part of the Markdown syntax. Here's one in action. Clicking this number[^fn-sample_footnote] will lead you to a footnote. The syntax looks like:
+I used Sentinel-2 satellite imagery to train a model to estimate the probability that each field is either a vinyard or not a vinyard. After classifying all crops as either vinyard or not vinyard I split my training and testing data by field ID. 
 
 ![test_train]({{ site.url }}/images/train_test_split.png)
 
+For my predictor variables I derived vegetation Indices from multispectral imagery from combination of visible and non-visible light. Indices highlight particular properties of vegetation like, nitrogen content, leaf water content, Moisture Stress. 
 
+I derived 6 different indices for each of the time slices and then calculated the mean and standard deviation across the year. So, I had 12 features in my final set of predictors - mean and standard deviation for each of the 6 indices.
+
+Indices used:
+
+* Green Normalized Difference Vegetation Index (gndvi)
+* Moisture Stress Index (msi)
+* Normalized Difference Infrared Index (ndii)
+* Normalized Difference Vegetation Index (ndvi)
+* Normalized difference red edge index (nrde)
+* Chlorophyll Red-Edge (re)
+  
 ## Results
 
-Vivamus sagittis lacus vel augue rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+I Ran several models and the best performing one was Support Vector Classification, which makes sense because imagery is one thing that it is typically used for. 
+
+Important predictors tended to be the standard deviation of veg indices. This makes sense because it indicates the seasonality of a crop - whether a crop is a tree that is green for most of the year or a crop that is harvested during certain seasons. 
+
+I chose the f1-score to evaluate my model because I wanted a balance between precision and recall – they are both important in this case. 
+>My final F1 score = .87
 
 
-### Lists
+### Errors
 
-Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean lacinia bibendum nulla sed consectetur. Etiam porta sem malesuada magna mollis euismod. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
+Because we're dealing with geographic data we can map the errors. And most errors appeared at the edges of the fields. In the example shown below, there are enough pixels correctly classified that when we we aggregate the per pixel predictions to the polygon level the model correctly identifies the crop type for that field.
 
+![errors mapped]({{ site.url }}/images/errors_mapped.png)
 
-### Tables
+The highest number of false positives occur with the intercrop class which is mostly vineyard and pecan (based on the metadata). So, the model is probably correctly classifying vineyard pixels but the test set is at the polygon level and therefore classifying it as not vineyard.
 
-Aenean lacinia bibendum nulla sed consectetur. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+We also generally se see poor performance in the minority classes. This is because there wasn't enough samples for the model to learn how to distinguish between these crops and vineyards.
 
------
-
-Want to see something else added? <a href="https://github.com/poole/poole/issues/new">Open an issue.</a>
-
-[^fn-sample_footnote]: Handy! Now click the return link to go back.
+![errors graphed]({{ site.url }}/images/graph_errors.png)
